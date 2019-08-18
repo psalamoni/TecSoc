@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "805377892057",
+    "firebase_url": "https://tecsoc-e3fb8.firebaseio.com",
+    "project_id": "tecsoc-e3fb8",
+    "storage_bucket": "tecsoc-e3fb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805377892057:android:ff5ffaa08bafdaad",
+        "android_client_info": {
+          "package_name": "com.example.tecsocapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805377892057-e1lg03mpd4k4riijhkh3uu6uj6j6vkmj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tecsocapp",
+            "certificate_hash": "57cd883a0a7f2593886a85a799b9db386f3bbd26"
+          }
+        },
+        {
+          "client_id": "805377892057-78negiplp4u60i29mtmcua2mqvkv2qaa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv6unh3UIsja1H-umW7JQILk0kelYpDYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805377892057-78negiplp4u60i29mtmcua2mqvkv2qaa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

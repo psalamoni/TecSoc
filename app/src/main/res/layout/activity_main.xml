@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="412dp"
+        android:layout_height="642dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="19dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:alpha="0.3"
+                android:src ="@drawable/universia"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/todo" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="167dp"
+                android:text="Bem vindo"
+                android:textSize="36sp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="48dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="false"
+                android:layout_marginStart="31dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:text="@string/entenda_o_novo_conceito_de_tecsoc_onde_a_sociedade_e_as_pesquisas_se_interagem"
+                android:textSize="14sp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="31dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

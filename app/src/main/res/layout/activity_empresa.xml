@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tecsocapp.EmpresaActivity">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="30dp">
+
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pesquisas" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Perfil" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <com.synnapps.carouselview.CarouselView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="226dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="20dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="30dp"
+
+                app:fillColor="#FFFFFFFF"
+                app:pageColor="#00000000"
+                app:radius="6dp"
+                app:slideInterval="3000"
+                app:strokeColor="#FF777777"
+                app:strokeWidth="1dp">
+
+            </com.synnapps.carouselview.CarouselView>
+
+            <ListView
+                android:id="@+id/lista_pesquisa"
+                android:layout_width="match_parent"
+                android:layout_height="307dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="20dp"
+                android:scrollingCache="true"
+                android:smoothScrollbar="false" />
+
+            <Button
+                android:id="@+id/cadastrar_pesquisa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="requisito_pesquisa"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="Cadastrar Requisição de Pesquisa">
+
+            </Button>
+
+        </LinearLayout>
+    </ScrollView>
