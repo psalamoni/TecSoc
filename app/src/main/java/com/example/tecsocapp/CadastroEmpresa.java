@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.tecsocapp.modelo.Empresa;
+import com.example.tecsocapp.modelo.TipoPerfil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -83,17 +84,23 @@ public class CadastroEmpresa extends AppCompatActivity implements AdapterView.On
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    String usuarioId = auth.getCurrentUser().getUid();
+
                     Empresa empresa = new Empresa();
                     empresa.setId_empresa(UUID.randomUUID().toString());
-                    empresa.setId_usuario(auth.getCurrentUser().getUid());
+                    empresa.setId_usuario(usuarioId);
                     empresa.setRazaoSocial(razaoSocial.getText().toString());
                     empresa.setCnpj(cnpj.getText().toString());
                     empresa.setEndereco(endereco.getText().toString());
                     empresa.setRepresentante(representante.getText().toString());
                     empresa.setArea_atuacao(area_atuacao);
 
+                    TipoPerfil tipoPerfil = new TipoPerfil();
+                    tipoPerfil.setUsuarioId(usuarioId);
+                    tipoPerfil.setPerfil(TipoPerfil.PERFIL_EMPRESA);
 
                     databaseReference.child("empresa").child(empresa.getId_empresa()).setValue(empresa);
+                    databaseReference.child("tipoperfil").child(usuarioId).setValue(tipoPerfil);
 
                     alert("Usuario Cadastrado com sucesso");
                     Intent i = new Intent (CadastroEmpresa.this, EmpresaActivity.class);
