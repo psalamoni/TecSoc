@@ -15,12 +15,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 
 public class Login extends AppCompatActivity {
     private EditText editEmail, editSenha;
     private Button btnLogar, btnNovo,btnNovoPesquisa;
     private TextView txtResetSenha;
     private FirebaseAuth auth;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +63,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent i = new Intent(Login.this, EmpresaActivity.class);
+                    Query query = databaseReference.child("tipoperfil").orderByChild("usuarioId").equalTo(auth.getCurrentUser().getUid());
+                    if(){ // Ver na documentação como fazer a seleção de dados para verificar o Perfil. Faça, Pascal
+                        Intent i = new Intent(Login.this, EmpresaActivity.class);
+
+                    }else{
+
+                    }
                     startActivity(i);
                 }else{
                     alert("E-mail ou senha incorretos");

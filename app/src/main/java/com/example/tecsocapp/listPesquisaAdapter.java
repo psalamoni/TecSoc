@@ -35,6 +35,10 @@ public class listPesquisaAdapter extends ArrayAdapter<Pesquisa> {
         this.pesquisaList = listPesquisa;
     }
 
+    @Override
+    public int getCount() {
+        return pesquisaList.size();
+    }
 
     // método que é chamado para fornecer cada item da lista
     @Override

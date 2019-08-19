@@ -9,12 +9,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="25dp"
             app:srcCompat="@drawable/logo" />
 
         <EditText
@@ -23,7 +26,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="teste@hotmail.com" />
+            android:text="teste@hotmail.com"
+            android:textColorLink="#275729" />
 
         <EditText
             android:id="@+id/senha"
@@ -31,23 +35,46 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
+            android:paddingBottom="25dp"
             android:text="123456" />
 
-        <Button
-            android:id="@+id/logar"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="390dp"
             android:layout_height="wrap_content"
-            android:text="Logar " />
+            android:orientation="vertical"
+            android:paddingBottom="25dp">
 
-        <Button
-            android:id="@+id/cadastro_empresa"
-            android:layout_width="match_parent"
+            <Button
+                android:id="@+id/logar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logar " />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="391dp"
             android:layout_height="wrap_content"
-            android:text="Cadastro Empresa" />
-        <Button
-            android:id="@+id/cadastro_pesquisa"
+            android:orientation="vertical"
+            android:paddingBottom="25dp">
+
+            <Button
+                android:id="@+id/cadastro_empresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cadastro Empresa" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cadastro Pesquisa" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/cadastro_pesquisa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cadastro Pesquisa" />
+        </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>

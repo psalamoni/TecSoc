@@ -15,7 +15,8 @@
 
         <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:tabIndicatorColor="#315A2F">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
@@ -50,10 +51,20 @@
         <ListView
             android:id="@+id/lista_pesquisa"
             android:layout_width="match_parent"
-            android:layout_height="307dp"
+            android:layout_height="71dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:drawSelectorOnTop="false"
+            android:fadeScrollbars="false"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="false"
+            android:fitsSystemWindows="false"
+            android:isScrollContainer="false"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:paddingBottom="20dp"
+            android:paddingBottom="40dp"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
             android:scrollingCache="true"
             android:smoothScrollbar="false" />
 
