@@ -101,7 +101,6 @@ public class EmpresaActivity extends Activity {
     private void inicializarFirebase() {
         FirebaseApp.initializeApp(EmpresaActivity.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setPersistenceEnabled(true);
         databaseReference = firebaseDatabase.getReference();
     }
 

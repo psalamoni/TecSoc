@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="teste@hotmail.com"
+            android:text="teste6@hotmail.com"
             android:textColorLink="#275729" />
 
         <EditText
