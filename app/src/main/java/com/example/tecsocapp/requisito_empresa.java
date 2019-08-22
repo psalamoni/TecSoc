@@ -1,7 +1,5 @@
 package com.example.tecsocapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,16 +7,21 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tecsocapp.R;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.tecsocapp.modelo.Empresa;
 import com.example.tecsocapp.modelo.RequisitoPesquisa;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class requisito_empresa extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -46,18 +49,33 @@ public class requisito_empresa extends AppCompatActivity implements AdapterView.
 
     }
 
-    public void cadastrarRequisito(){
+    public void cadastrarRequisito() {
         RequisitoPesquisa requisitoPesquisa = new RequisitoPesquisa();
         requisitoPesquisa.setId_requisito_pesquisa(UUID.randomUUID().toString());
-        requisitoPesquisa.setId_usuario(auth.getCurrentUser().getUid());
+        requisitoPesquisa.setId_usuario(Objects.requireNonNull(auth.getCurrentUser()).getUid());
         requisitoPesquisa.setArea(this.area);
         requisitoPesquisa.setDescricao(this.descricao.getText().toString());
         requisitoPesquisa.setNome(this.nome.getText().toString());
         requisitoPesquisa.setObsAdicional(this.obsAdicional.getText().toString());
         requisitoPesquisa.setValor(this.valor.getText().toString());
-        databaseReference.child("requisitoPesquisa").child(requisitoPesquisa.getId_requisito_pesquisa()).setValue(requisitoPesquisa);
 
+        databaseReference.child("empresa").orderByChild("id_usuario")
+                .equalTo(requisitoPesquisa.getId_usuario()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Empresa empresa = dataSnapshot.getChildren().iterator().next().getValue(Empresa.class);
+                requisitoPesquisa.setNomeRequisitante(empresa.getRazaoSocial());
+
+                databaseReference.child("requisitoPesquisa").child(requisitoPesquisa.getId_requisito_pesquisa()).setValue(requisitoPesquisa);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                alert("Falha ao buscar a empresa que fez o requisito de pesquisa");
+            }
+        });
     }
+
     private void eventoClicks() {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,5 +113,9 @@ public class requisito_empresa extends AppCompatActivity implements AdapterView.
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    private void alert(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_LONG).show();
     }
 }
