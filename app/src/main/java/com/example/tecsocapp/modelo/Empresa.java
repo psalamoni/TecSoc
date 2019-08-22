@@ -13,7 +13,7 @@ public class Empresa {
     public Empresa() {
     }
 
-    public String getRazaoSocial(String s) {
+    public String getRazaoSocial() {
         return razaoSocial;
     }
 
