@@ -1,8 +1,5 @@
 package com.example.tecsocapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tecsocapp.modelo.Empresa;
 import com.example.tecsocapp.modelo.TipoPerfil;
@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class CadastroEmpresa extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -84,7 +85,7 @@ public class CadastroEmpresa extends AppCompatActivity implements AdapterView.On
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    String usuarioId = auth.getCurrentUser().getUid();
+                    String usuarioId = Objects.requireNonNull(auth.getCurrentUser()).getUid();
 
                     Empresa empresa = new Empresa();
                     empresa.setId_empresa(UUID.randomUUID().toString());
