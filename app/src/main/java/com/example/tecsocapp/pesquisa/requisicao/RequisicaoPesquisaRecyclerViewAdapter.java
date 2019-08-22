@@ -51,6 +51,12 @@ public class RequisicaoPesquisaRecyclerViewAdapter extends RecyclerView.Adapter<
         return mValues.size();
     }
 
+    void updateData(List<RequisitoPesquisa> requisitos) {
+        mValues.clear();
+        mValues.addAll(requisitos);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         final View mView;
         final TextView mNomeView;

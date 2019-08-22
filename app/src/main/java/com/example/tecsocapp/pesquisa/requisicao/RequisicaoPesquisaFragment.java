@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tecsocapp.R;
 import com.example.tecsocapp.modelo.RequisitoPesquisa;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +25,7 @@ import java.util.List;
 public class RequisicaoPesquisaFragment extends Fragment {
 
     private OnListFragmentInteractionListener mListener;
+    private RequisicaoPesquisaRecyclerViewAdapter mAdapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -48,13 +55,37 @@ public class RequisicaoPesquisaFragment extends Fragment {
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
-
-            List<RequisitoPesquisa> requisitos = new ArrayList<>(); //TODO: Buscar requisitos no BD
-
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new RequisicaoPesquisaRecyclerViewAdapter(requisitos, mListener));
+
+            mAdapter = new RequisicaoPesquisaRecyclerViewAdapter(new ArrayList<>(), mListener);
+            recyclerView.setAdapter(mAdapter);
+
+            AddItemsFromDb();
         }
+
         return view;
+    }
+
+    private void AddItemsFromDb() {
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+
+        db.child("requisitoPesquisa").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<RequisitoPesquisa> requisitos = new ArrayList<>();
+
+                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
+                    requisitos.add(objSnapshot.getValue(RequisitoPesquisa.class));
+                }
+
+                mAdapter.updateData(requisitos);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                alert("Falha ao buscar os requisitos de pesquisa");
+            }
+        });
     }
 
 
@@ -73,6 +104,10 @@ public class RequisicaoPesquisaFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    private void alert(String msg) {
+        Toast.makeText(this.getContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     /**
