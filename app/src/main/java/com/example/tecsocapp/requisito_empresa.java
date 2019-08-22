@@ -1,5 +1,6 @@
 package com.example.tecsocapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,6 +30,7 @@ public class requisito_empresa extends AppCompatActivity implements AdapterView.
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private Button btnCadastrar;
+    private Button btnCancelar;
     private EditText nome;
     private String area;
     private EditText descricao;
@@ -83,6 +85,15 @@ public class requisito_empresa extends AppCompatActivity implements AdapterView.
                 cadastrarRequisito();
             }
         });
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(requisito_empresa.this, EmpresaActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
     }
 
     private void inicializarFirebase() {
@@ -97,6 +108,7 @@ public class requisito_empresa extends AppCompatActivity implements AdapterView.
         descricao = findViewById(R.id.editDescricao);
         valor = findViewById(R.id.editValor);
         obsAdicional = findViewById(R.id.editObs);
+        btnCancelar = findViewById(R.id.requisitoPesquisaVoltar);
 
     }
     @Override

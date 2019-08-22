@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -16,12 +16,12 @@
             android:id="@+id/imageView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="25dp"
-            app:srcCompat="@drawable/logo" />
+            app:srcCompat="@drawable/logo"
+            android:contentDescription="TODO" />
 
         <EditText
             android:id="@+id/email"
+            android:paddingTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -35,29 +35,41 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
+            android:paddingTop="20dp"
             android:paddingBottom="25dp"
-            android:text="123456" />
+            android:text="123456"
+            android:textColorHighlight="#386326"
+            android:textColorLink="#74BB4B" />
 
         <LinearLayout
-            android:layout_width="390dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="25dp">
+            android:gravity="center"
+            android:paddingTop="15dp"
+            android:paddingLeft="45dp"
+            android:paddingRight="45dp"
+            android:paddingBottom="15dp">
 
             <Button
                 android:id="@+id/logar"
+                android:background="#0D7E7D7D"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Logar " />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="391dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="25dp">
+            android:gravity="center"
+            android:paddingLeft="45dp"
+            android:paddingRight="45dp"
+            android:paddingBottom="15dp">
 
             <Button
+                android:background="#0D7E7D7D"
                 android:id="@+id/cadastro_empresa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,10 +78,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingLeft="45dp"
+            android:paddingRight="45dp">
 
             <Button
+                android:background="#0D7E7D7D"
                 android:id="@+id/cadastro_pesquisa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

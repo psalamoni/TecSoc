@@ -57,7 +57,9 @@ public class listPesquisaAdapter extends ArrayAdapter<Pesquisa> {
         // pegando referências para as views que definimos dentro do item da lista,
         // isto é, os 2 textviews
         TextView textViewName = listViewItem.findViewById(R.id.txtNome);
-        TextView textViewGenre = listViewItem.findViewById(R.id.txtNome);
+        TextView textViewUni = listViewItem.findViewById(R.id.item_uni);
+        TextView textViewArea = listViewItem.findViewById(R.id.item_area);
+        TextView textViewGenre = listViewItem.findViewById(R.id.item_descricao);
 
         // a posição do artista na lista (armazenamento) é a mesma na lista (listview)
         // então usamos esse valor (position) para acessar o objeto "Artist" correto
@@ -68,6 +70,8 @@ public class listPesquisaAdapter extends ArrayAdapter<Pesquisa> {
         // nas views que formam nosso item da lista
         textViewName.setText(pesquisa.getTitulo());
         textViewGenre.setText(pesquisa.getDescricao());
+        textViewUni.setText(pesquisa.getUniversidade());
+        textViewArea.setText(pesquisa.getGrande_area());
 
         // a view está pronta! É só devolver para quem pediu
         return listViewItem;
