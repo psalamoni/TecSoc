@@ -34,12 +34,8 @@ public class RequisicaoPesquisaFragment extends Fragment {
     public RequisicaoPesquisaFragment() {
     }
 
-    @SuppressWarnings("unused")
-    public static RequisicaoPesquisaFragment newInstance(int columnCount) {
-        RequisicaoPesquisaFragment fragment = new RequisicaoPesquisaFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+    public static RequisicaoPesquisaFragment newInstance() {
+        return new RequisicaoPesquisaFragment();
     }
 
     @Override

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="2dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:minHeight="100dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:padding="@dimen/text_margin"
+                    android:text="Requisição"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:textColor="@color/vpi__background_holo_light" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/text_margin"
+                    android:layout_marginRight="@dimen/text_margin"
+                    android:layout_marginBottom="@dimen/text_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/item_nome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin"
+                        android:layout_marginRight="@dimen/text_margin"
+                        android:layout_marginBottom="5dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        tools:text="Nível de Qualidade de Sementes de Soja" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/item_area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginBottom="@dimen/text_margin"
+                            android:maxLength="29"
+                            android:singleLine="true"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                            android:textSize="17sp"
+                            tools:text="Biologia" />
+
+                        <TextView
+                            android:id="@+id/item_valor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/text_margin"
+                            android:layout_marginBottom="@dimen/text_margin"
+                            android:maxLength="16"
+                            android:singleLine="true"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                            android:textSize="17sp"
+                            tools:ignore="RelativeOverlap"
+                            tools:text="R$ 20.000,00" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/text_margin"
+                        android:drawableLeft="@drawable/ic_descricao"
+                        android:drawablePadding="10dp"
+                        android:text="Descrição: "
+                        android:textAppearance="?android:attr/textAppearanceListItem" />
+
+                    <TextView
+                        android:id="@+id/item_descricao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/text_margin"
+                        android:layout_marginBottom="@dimen/text_margin"
+                        android:textAppearance="?android:attr/textAppearanceListItem"
+                        tools:text="Nossa empresa está necessitando alterar a forma como o controle de qualidade é realizado atualmente. Estamos pensando em ababababababababa" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/text_margin"
+                        android:drawableLeft="@drawable/ic_descricao"
+                        android:drawablePadding="10dp"
+                        android:text="Observação: "
+                        android:textAppearance="?android:attr/textAppearanceListItem" />
+
+                    <TextView
+                        android:id="@+id/item_observacao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/text_margin"
+                        android:layout_marginBottom="@dimen/text_margin"
+                        android:textAppearance="?android:attr/textAppearanceListItem"
+                        tools:text="Gostaria de enfatizar que a necessidade de renovação processual representa uma abertura para a melhoria de alternativas às soluções ortodoxas." />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="2dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:minHeight="100dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:padding="@dimen/text_margin"
+                    android:text="Empresa"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:textColor="@color/vpi__background_holo_light" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/text_margin"
+                    android:layout_marginBottom="@dimen/text_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/item_nomeEmpresa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin"
+                        android:layout_marginBottom="5dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        tools:text="Pecu-Sol Sementes" />
+
+                    <TextView
+                        android:id="@+id/item_areaEmpresa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/text_margin"
+                        android:maxLength="29"
+                        android:singleLine="true"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                        android:textSize="17sp"
+                        tools:text="Agropecuária" />
+
+                    <TextView
+                        android:id="@+id/item_enderecoEmpresa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/text_margin"
+                        android:drawableLeft="@drawable/ic_local"
+                        android:drawablePadding="10dp"
+                        android:textAppearance="?android:attr/textAppearanceListItem"
+                        tools:text="Cuiabá - MT" />
+
+                    <TextView
+                        android:id="@+id/item_representanteEmpresa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/text_margin"
+                        android:drawableLeft="@drawable/ic_pessoa"
+                        android:drawablePadding="10dp"
+                        android:textAppearance="?android:attr/textAppearanceListItem"
+                        tools:text="Pedro Joelson Estevão" />
+
+                    <TextView
+                        android:id="@+id/item_telefoneEmpresa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/text_margin"
+                        android:drawableLeft="@drawable/ic_telefone"
+                        android:drawablePadding="10dp"
+                        android:textAppearance="?android:attr/textAppearanceListItem"
+                        tools:text="(65) 3027-0000" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/mtrl_btn_text_btn_padding_left"
+                        android:paddingRight="@dimen/mtrl_btn_text_btn_padding_right"
+                        android:text="LIGAR"
+                        android:textAppearance="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:textColor="@color/mtrl_text_btn_text_color_selector"
+                        android:textSize="18sp"
+                        android:visibility="gone"
+                        tools:ignore="PrivateResource" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>
