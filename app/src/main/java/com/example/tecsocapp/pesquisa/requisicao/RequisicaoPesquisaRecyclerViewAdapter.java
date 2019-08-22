@@ -80,7 +80,7 @@ public class RequisicaoPesquisaRecyclerViewAdapter extends RecyclerView.Adapter<
             mItem = requisito;
             mNomeView.setText(requisito.getNome());
             mAreaView.setText(requisito.getArea());
-            mValorView.setText(requisito.getValor());
+            mValorView.setText(String.format("R$ %s,00", requisito.getValor()));
             mDescricaoView.setText(requisito.getDescricao());
             mEmpresaView.setText(requisito.getNomeRequisitante());
         }
