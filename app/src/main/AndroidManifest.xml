@@ -14,7 +14,7 @@
         android:allowBackup="false"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".PesquisaActivity" />
+        <activity android:name=".pesquisa.PesquisaMainActivity" />
         <activity android:name=".CadastroPesquisa" />
         <activity android:name=".PerfilEmpresa" />
         <activity android:name=".EmpresaActivity" />
