@@ -8,6 +8,7 @@ public class RequisitoPesquisa {
     private String obsAdicional;
     private String id_requisito_pesquisa;
     private String id_usuario;
+    private String nomeRequisitante;
 
     public String getId_requisito_pesquisa() {
         return id_requisito_pesquisa;
@@ -66,6 +67,22 @@ public class RequisitoPesquisa {
 
     public void setObsAdicional(String obsAdicional) {
         this.obsAdicional = obsAdicional;
+    }
+
+    public String getNomeRequisitante() {
+        return nomeRequisitante;
+    }
+
+    public void setNomeRequisitante(String nomeRequisitante) {
+        this.nomeRequisitante = nomeRequisitante;
+    }
+
+    @Override
+    public String toString() {
+        return "RequisitoPesquisa{" +
+                "nome='" + nome + '\'' +
+                ", id_requisito_pesquisa='" + id_requisito_pesquisa + '\'' +
+                '}';
     }
 }
 
