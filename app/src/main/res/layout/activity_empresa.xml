@@ -30,11 +30,19 @@
             app:strokeWidth="1dp">
 
         </com.synnapps.carouselview.CarouselView>
+        <Button
+            android:id="@+id/cadastrar_pesquisa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="requisito_pesquisa"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="Cadastrar Requisição de Pesquisa"></Button>
 
         <ListView
             android:id="@+id/lista_pesquisa"
             android:layout_width="match_parent"
-            android:layout_height="307dp"
+            android:layout_height="match_parent"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingBottom="20dp"
@@ -43,22 +51,7 @@
 
         </ListView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/cadastrar_pesquisa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="requisito_pesquisa"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:text="Cadastrar Requisição de Pesquisa">
-
-            </Button>
-        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
