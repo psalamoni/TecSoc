@@ -16,11 +16,8 @@
         <com.synnapps.carouselview.CarouselView
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
-            android:layout_height="226dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="20dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="30dp"
+            android:layout_height="220dp"
+            android:padding="10dp"
 
             app:fillColor="#FFFFFFFF"
             app:pageColor="#00000000"
@@ -30,28 +27,20 @@
             app:strokeWidth="1dp">
 
         </com.synnapps.carouselview.CarouselView>
-        <Button
-            android:id="@+id/cadastrar_pesquisa"
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="requisito_pesquisa"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:text="Cadastrar Requisição de Pesquisa"></Button>
+            app:tabIndicatorColor="#315A2F"/>
 
-        <ListView
-            android:id="@+id/lista_pesquisa"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="20dp"
-            android:scrollingCache="true"
-            android:smoothScrollbar="false">
+            android:layout_height="match_parent">
+        </androidx.viewpager.widget.ViewPager>
 
-        </ListView>
 
 
     </LinearLayout>
-
 </RelativeLayout>

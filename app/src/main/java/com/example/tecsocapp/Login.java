@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tecsocapp.modelo.TipoPerfil;
 import com.example.tecsocapp.pesquisa.PesquisaMainActivity;
+import com.example.tecsocapp.pesquisaempresa.PesquisasEmpresa;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -97,7 +98,7 @@ public class Login extends AppCompatActivity {
                                     String tipoPerfilUsuario = p.getPerfil();
 
                                     if (tipoPerfilUsuario.equals(TipoPerfil.PERFIL_EMPRESA)) {
-                                        Intent i = new Intent(Login.this, EmpresaActivity.class);
+                                        Intent i = new Intent(Login.this, EmpresaMain.class);
                                         startActivity(i);
                                         finish();
                                     } else if (tipoPerfilUsuario.equals(TipoPerfil.PERFIL_PESQUISA)) {

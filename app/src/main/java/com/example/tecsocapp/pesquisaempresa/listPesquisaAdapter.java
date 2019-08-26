@@ -1,4 +1,4 @@
-package com.example.tecsocapp;
+package com.example.tecsocapp.pesquisaempresa;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.tecsocapp.R;
 import com.example.tecsocapp.modelo.Pesquisa;
@@ -19,17 +21,12 @@ import java.util.List;
 
 public class listPesquisaAdapter extends ArrayAdapter<Pesquisa> {
 
-    private Activity context;
+    Fragment context;
     private List<Pesquisa> pesquisaList;  // lista para armazenar os artitas
-    private int[]mImages = new int[]{
-            R.drawable.agro,R.drawable.quimica,R.drawable.fisica,R.drawable.universia
-    };
-    private String[ ]MImageTitle = new String[]{
-            "Agronomia","Quimica","Fisica","Universidade"
-    };
-    public listPesquisaAdapter(Activity context, List<Pesquisa> listPesquisa) {
 
-        super(context, R.layout.lista_pesquisa, listPesquisa);
+    public listPesquisaAdapter(Fragment context, List<Pesquisa> listPesquisa) {
+
+        super(context.getContext(), R.layout.lista_pesquisa, listPesquisa);
 
         this.context = context;
         this.pesquisaList = listPesquisa;
@@ -43,9 +40,6 @@ public class listPesquisaAdapter extends ArrayAdapter<Pesquisa> {
     // método que é chamado para fornecer cada item da lista
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
-
-
 
         // criando um objeto "inflador"
         LayoutInflater inflater = context.getLayoutInflater();

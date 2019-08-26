@@ -88,7 +88,7 @@ public class requisito_empresa extends AppCompatActivity implements AdapterView.
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(requisito_empresa.this, EmpresaActivity.class);
+                Intent i = new Intent(requisito_empresa.this, EmpresaMain.class);
                 startActivity(i);
                 finish();
             }

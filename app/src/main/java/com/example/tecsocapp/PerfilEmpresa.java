@@ -1,42 +1,37 @@
 package com.example.tecsocapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import androidx.fragment.app.Fragment;
 
-public class PerfilEmpresa extends AppCompatActivity {
-    private FirebaseAuth auth;
-    private FirebaseUser user;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+
+public class PerfilEmpresa extends Fragment {
+
+    public PerfilEmpresa() {
+        // Required empty public constructor
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil_empresa);
-        inicializaComponentes();
-        eventosonClick();
     }
 
-    private void eventosonClick() {
-    }
-
-    private void inicializaComponentes() {
-
-    }
     @Override
-    protected void onStart() {
-        super.onStart();
-        auth = Conexao.getFirebaseAuth();
-        user = Conexao.getFirebaseUser();
-        verificarUser();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_perfil_empresa, container, false);
     }
 
-    private void verificarUser() {
-        if(user==null){
-            finish();
-        }else{
-            
-        }
+    public void requisito_pesquisa(View view){
+
     }
+
 }

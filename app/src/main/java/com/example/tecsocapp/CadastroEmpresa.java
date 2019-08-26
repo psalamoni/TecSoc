@@ -104,7 +104,7 @@ public class CadastroEmpresa extends AppCompatActivity implements AdapterView.On
                     databaseReference.child("tipoperfil").child(usuarioId).setValue(tipoPerfil);
 
                     alert("Usuario Cadastrado com sucesso");
-                    Intent i = new Intent (CadastroEmpresa.this, EmpresaActivity.class);
+                    Intent i = new Intent (CadastroEmpresa.this, EmpresaMain.class);
                     startActivity(i);
                     finish();
                 }else{
