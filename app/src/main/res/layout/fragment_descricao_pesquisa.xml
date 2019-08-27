@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DescricaoPesquisasEmpresa">
+
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.MaterialComponents.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="2dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:minHeight="100dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/text_margin"
+                        android:layout_marginRight="@dimen/text_margin"
+                        android:layout_marginBottom="@dimen/text_margin"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/pesquisa_titulo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/text_margin"
+                            android:layout_marginBottom="5dp"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                            tools:text="Não Definido" />
+
+                        <TextView
+                            android:id="@+id/pesquisa_descricao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/text_margin"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                            android:textSize="17sp"
+                            tools:text="Não Definido" />
+
+                        <TextView
+                            android:id="@+id/pesquisa_area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/text_margin"
+                            android:drawableLeft="@drawable/ic_empresa"
+                            android:drawablePadding="10dp"
+                            android:textAppearance="?android:attr/textAppearanceListItem"
+                            tools:text="Não Definido" />
+
+                        <TextView
+                            android:id="@+id/pesquisa_endereco"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/text_margin"
+                            android:drawableLeft="@drawable/ic_local"
+                            android:drawablePadding="10dp"
+                            android:textAppearance="?android:attr/textAppearanceListItem"
+                            tools:text="Não Definido" />
+
+                        <TextView
+                            android:id="@+id/pesquisa_professor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/text_margin"
+                            android:drawableLeft="@drawable/ic_pessoa"
+                            android:drawablePadding="10dp"
+                            android:textAppearance="?android:attr/textAppearanceListItem"
+                            tools:text="Não Definido" />
+
+                        <TextView
+                            android:id="@+id/pesquisa_contato"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/text_margin"
+                            android:drawableLeft="@drawable/ic_telefone"
+                            android:drawablePadding="10dp"
+                            android:textAppearance="?android:attr/textAppearanceListItem"
+                            tools:text="Não Definido" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dp">
+
+                            <Button
+                                android:id="@+id/voltar_descricao"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Voltar"></Button>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
