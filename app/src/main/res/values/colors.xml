@@ -5,4 +5,8 @@
     <color name="colorEmpAccent">#4c8c4a</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="colorPesquisaPrimary">#2196F3</color>
+    <color name="colorPesquisaPrimaryDark">#1565C0</color>
+    <color name="colorPesquisaAccent">#FF9800</color>
 </resources>

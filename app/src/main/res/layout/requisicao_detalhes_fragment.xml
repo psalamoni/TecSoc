@@ -33,7 +33,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
+                    android:background="@color/colorPesquisaPrimaryDark"
                     android:padding="@dimen/text_margin"
                     android:text="Requisição"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
@@ -150,7 +150,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
+                    android:background="@color/colorPesquisaAccent"
                     android:padding="@dimen/text_margin"
                     android:text="Empresa"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"

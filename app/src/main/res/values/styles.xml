@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="PesquisaTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPesquisaPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPesquisaPrimaryDark</item>
+        <item name="colorAccent">@color/colorPesquisaAccent</item>
+    </style>
+
 </resources>

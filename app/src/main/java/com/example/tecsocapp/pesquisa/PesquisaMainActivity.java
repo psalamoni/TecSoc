@@ -3,6 +3,7 @@ package com.example.tecsocapp.pesquisa;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -11,6 +12,8 @@ import com.example.tecsocapp.modelo.RequisitoPesquisa;
 import com.example.tecsocapp.pesquisa.requisicao.RequisicaoDetalhesFragment;
 import com.example.tecsocapp.pesquisa.requisicao.RequisicaoPesquisaFragment;
 
+import java.util.Objects;
+
 public class PesquisaMainActivity extends AppCompatActivity
         implements RequisicaoPesquisaFragment.OnListFragmentInteractionListener {
 
@@ -18,6 +21,9 @@ public class PesquisaMainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pesquisa_main);
+
+        ActionBar actionBar = Objects.requireNonNull(this.getSupportActionBar());
+        actionBar.setTitle(actionBar.getTitle() + " - Pesquisa");
 
         if (findViewById(R.id.fragment_container) != null) {
 

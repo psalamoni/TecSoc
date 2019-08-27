@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.tecsocapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-sdk tools:overrideLibrary="com.firebase.ui.database,com.firebase.ui.storage,com.firebase.ui.common" />
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -11,8 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".PerfilEmpresaView"></activity>
-        <activity android:name=".pesquisa.PesquisaMainActivity" />
+        <activity android:name=".PerfilEmpresaView" />
+        <activity
+            android:name=".pesquisa.PesquisaMainActivity"
+            android:theme="@style/PesquisaTheme" />
         <activity android:name=".CadastroPesquisa" />
         <activity android:name=".pesquisaempresa.PesquisasEmpresa" />
         <activity android:name=".EmpresaMain" />
@@ -26,9 +31,5 @@
             </intent-filter>
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-sdk tools:overrideLibrary="com.firebase.ui.database,com.firebase.ui.storage,com.firebase.ui.common" />
 
 </manifest>

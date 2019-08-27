@@ -29,7 +29,7 @@
             android:layout_marginTop="@dimen/text_margin"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="@dimen/text_margin"
-            android:background="#FF5722" />
+            android:background="@color/colorPesquisaAccent" />
 
         <LinearLayout
             android:layout_width="match_parent"
