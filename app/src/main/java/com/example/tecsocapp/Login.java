@@ -96,11 +96,9 @@ public class Login extends AppCompatActivity {
                                     if (tipoPerfilUsuario.equals(TipoPerfil.PERFIL_EMPRESA)) {
                                         Intent i = new Intent(Login.this, EmpresaMain.class);
                                         startActivity(i);
-                                        finish();
                                     } else if (tipoPerfilUsuario.equals(TipoPerfil.PERFIL_PESQUISA)) {
                                         Intent i = new Intent(Login.this, PesquisaMainActivity.class);
                                         startActivity(i);
-                                        finish();
                                     } else {
                                         alert("Tipo de Perfil desconhecido: " + tipoPerfilUsuario);
                                     }

@@ -5,9 +5,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Spinner;
 import com.example.tecsocapp.modelo.Empresa;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -40,13 +38,12 @@ public class PerfilEmpresa extends Fragment {
     }
 
     private void inicializaComponentes() {
-        razaoSocial = (TextView)PerfilView.findViewById(R.id.cadastro_empresa_razao_social);
-        cnpj = (TextView)PerfilView.findViewById(R.id.cadastro_empresa_cnpj);
-        editEmail = (TextView)PerfilView.findViewById(R.id.cadastroEmail);
-        endereco = (TextView)PerfilView.findViewById(R.id.cadastro_empresa_endereco);
-        representante = (TextView)PerfilView.findViewById(R.id.cadastro_empresa_representante);
-        spinner = (TextView)PerfilView.findViewById(R.id.area_atuacao_empresa);
-
+        razaoSocial = PerfilView.findViewById(R.id.cadastro_empresa_razao_social);
+        cnpj = PerfilView.findViewById(R.id.cadastro_empresa_cnpj);
+        editEmail = PerfilView.findViewById(R.id.cadastroEmail);
+        endereco = PerfilView.findViewById(R.id.cadastro_empresa_endereco);
+        representante = PerfilView.findViewById(R.id.cadastro_empresa_representante);
+        spinner = PerfilView.findViewById(R.id.area_atuacao_empresa);
     }
 
     @Override

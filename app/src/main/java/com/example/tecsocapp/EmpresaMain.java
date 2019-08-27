@@ -80,8 +80,8 @@ public class EmpresaMain extends AppCompatActivity {
 
         /* Implementação das Tabas */
 
-        tabLayout=(TabLayout)findViewById(R.id.tabLayout);
-        viewPager=(ViewPager)findViewById(R.id.viewPager);
+        tabLayout=findViewById(R.id.tabLayout);
+        viewPager=findViewById(R.id.viewPager);
 
         tabLayout.addTab(tabLayout.newTab().setText("Pesquisas"));
         tabLayout.addTab(tabLayout.newTab().setText("Perfil"));
@@ -147,6 +147,12 @@ public class EmpresaMain extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        FirebaseAuth.getInstance().signOut();
     }
 
 }
