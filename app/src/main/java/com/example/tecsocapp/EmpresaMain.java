@@ -1,15 +1,21 @@
 package com.example.tecsocapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.tecsocapp.modelo.Pesquisa;
+import com.example.tecsocapp.pesquisa.requisicao.RequisicaoPesquisaFragment;
 import com.example.tecsocapp.pesquisaempresa.MyAdapter;
+import com.example.tecsocapp.pesquisaempresa.PesquisasEmpresa;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +30,7 @@ public class EmpresaMain extends AppCompatActivity {
 
     private FirebaseAuth auth;
     private FirebaseUser user;
+    private static String idviewpesquisa = null;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     private int[]mImages = new int[]{
@@ -33,8 +40,18 @@ public class EmpresaMain extends AppCompatActivity {
             "Agronomia","Quimica","Fisica","Universidade"
     };
     TabLayout tabLayout;
-    ViewPager viewPager;
+    private static ViewPager viewPager;
 
+    public EmpresaMain() {
+    }
+
+    public static String getIdviewpesquisa() {
+        return idviewpesquisa;
+    }
+
+    public static void setIdviewpesquisa(String idviewpesquisa) {
+        EmpresaMain.idviewpesquisa = idviewpesquisa;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +108,10 @@ public class EmpresaMain extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void setViewPager(int id){
+        viewPager.setCurrentItem(id);
     }
 
     public void requisito_pesquisa(View view){

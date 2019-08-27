@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tecsocapp.modelo.TipoPerfil;
 import com.example.tecsocapp.pesquisa.PesquisaMainActivity;
-import com.example.tecsocapp.pesquisaempresa.PesquisasEmpresa;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -85,15 +84,12 @@ public class Login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Query query;
-
+                    String id = Objects.requireNonNull(auth.getCurrentUser()).getUid();
                     databaseReference.child("tipoperfil").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            String id = Objects.requireNonNull(auth.getCurrentUser()).getUid();
-
                             for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
                                 TipoPerfil p = objSnapshot.getValue(TipoPerfil.class);
-
                                 if (p.getUsuarioId().equals(id)) {
                                     String tipoPerfilUsuario = p.getPerfil();
 

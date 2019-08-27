@@ -83,6 +83,10 @@ public class requisito_empresa extends AppCompatActivity implements AdapterView.
             @Override
             public void onClick(View view) {
                 cadastrarRequisito();
+                Intent i = new Intent(requisito_empresa.this, EmpresaMain.class);
+                Toast.makeText(requisito_empresa.this, "Requisição Cadastrada", Toast.LENGTH_SHORT).show();
+                startActivity(i);
+                finish();
             }
         });
         btnCancelar.setOnClickListener(new View.OnClickListener() {
@@ -118,8 +122,7 @@ public class requisito_empresa extends AppCompatActivity implements AdapterView.
     }
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        this.area = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(adapterView.getContext(), this.area, Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

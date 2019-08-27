@@ -47,12 +47,16 @@ public class CadastroEmpresa extends AppCompatActivity implements AdapterView.On
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.area_de_atuacao, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
         inicializaComponentes();
         inicializarFirebase();
         eventoClicks();
+    }
+
+    public CadastroEmpresa() {
     }
 
     private void inicializarFirebase() {

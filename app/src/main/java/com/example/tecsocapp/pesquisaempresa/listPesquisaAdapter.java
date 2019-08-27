@@ -1,21 +1,16 @@
 package com.example.tecsocapp.pesquisaempresa;
 
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.tecsocapp.EmpresaMain;
 import com.example.tecsocapp.R;
 import com.example.tecsocapp.modelo.Pesquisa;
-import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageClickListener;
-import com.synnapps.carouselview.ImageListener;
 
 import java.util.List;
 
@@ -43,6 +38,7 @@ public class listPesquisaAdapter extends ArrayAdapter<Pesquisa> {
 
         // criando um objeto "inflador"
         LayoutInflater inflater = context.getLayoutInflater();
+        EmpresaMain empresa = new EmpresaMain();
 
         // usando o inflador para criar uma View a partir do arquivo de layout
         // que fizemos definindo os itens da lista
@@ -62,6 +58,13 @@ public class listPesquisaAdapter extends ArrayAdapter<Pesquisa> {
 
         // finalmente, colocamos os valores do objeto artista recuperado
         // nas views que formam nosso item da lista
+        listViewItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                empresa.setIdviewpesquisa(pesquisa.getId_pesquisa());
+                empresa.setViewPager(2);
+            }
+        });
         textViewName.setText(pesquisa.getTitulo());
         textViewGenre.setText(pesquisa.getDescricao());
         textViewUni.setText(pesquisa.getUniversidade());
@@ -70,4 +73,6 @@ public class listPesquisaAdapter extends ArrayAdapter<Pesquisa> {
         // a view está pronta! É só devolver para quem pediu
         return listViewItem;
     }
+
+
 }

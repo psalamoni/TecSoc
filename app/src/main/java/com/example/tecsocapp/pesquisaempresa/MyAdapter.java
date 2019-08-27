@@ -6,9 +6,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.tecsocapp.DescricaoPesquisasEmpresa;
+import com.example.tecsocapp.EmpresaMain;
 import com.example.tecsocapp.PerfilEmpresa;
 
 public class MyAdapter extends FragmentPagerAdapter {
+
+    EmpresaMain empresa = new EmpresaMain();
 
     private Context myContext;
     int totalTabs;
@@ -16,7 +20,7 @@ public class MyAdapter extends FragmentPagerAdapter {
     public MyAdapter(Context context, FragmentManager fm, int totalTabs) {
         super(fm);
         myContext = context;
-        this.totalTabs = totalTabs;
+        this.totalTabs = 3;
     }
 
     // this is for fragment tabs
@@ -29,9 +33,9 @@ public class MyAdapter extends FragmentPagerAdapter {
             case 1:
                 PerfilEmpresa perfilempresa = new PerfilEmpresa();
                 return perfilempresa;
-            /*case 2:
-                MovieFragment movieFragment = new MovieFragment();
-                return movieFragment; */
+            case 2:
+                DescricaoPesquisasEmpresa descricaopesquisaempresa = new DescricaoPesquisasEmpresa();
+                return descricaopesquisaempresa;
             default:
                 PesquisasEmpresa another = new PesquisasEmpresa();
                 return another;

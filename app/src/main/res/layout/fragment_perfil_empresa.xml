@@ -22,14 +22,15 @@
                 android:text="Razão Social"
                 android:textSize="16sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/cadastro_empresa_razao_social"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:ems="10"
-                android:hint="Digite a Razão Social"
-                android:inputType="textPersonName" />
+                android:hint="Não Especificado"
+                android:inputType="none"
+                android:focusable="false"/>
 
             <TextView
                 android:id="@+id/textView2"
@@ -38,14 +39,15 @@
                 android:text="CNPJ"
                 android:textSize="16sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/cadastro_empresa_cnpj"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:ems="10"
-                android:hint="Digite o CNPJ"
-                android:inputType="textPersonName" />
+                android:hint="Não Especificado"
+                android:inputType="none"
+                android:focusable="false"/>
 
             <TextView
                 android:id="@+id/textView10"
@@ -54,14 +56,15 @@
                 android:text="E-mail "
                 android:textSize="16sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/cadastroEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:ems="10"
-                android:hint="Digite seu Email"
-                android:inputType="textEmailAddress" />
+                android:hint="Não Especificado"
+                android:inputType="none"
+                android:focusable="false"/>
 
             <TextView
                 android:id="@+id/textView11"
@@ -70,42 +73,49 @@
                 android:text="Endereço"
                 android:textSize="16sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/cadastro_empresa_endereco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:ems="10"
-                android:hint="Insira o endereço da Empresa"
-                android:inputType="textPersonName" />
+                android:hint="Não Especificado"
+                android:inputType="none"
+                android:focusable="false"/>
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Representante" />
+                android:text="Representante"
+                android:textSize="16sp"/>
 
-            <EditText
+            <TextView
                 android:id="@+id/cadastro_empresa_representante"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:ems="10"
-                android:hint="Digite o nome do representante da empresa"
-                android:inputType="textPersonName" />
+                android:hint="Não Especificado"
+                android:inputType="none"
+                android:focusable="false"/>
 
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Área de atuação" />
+                android:text="Área de atuação"
+                android:textSize="16sp"/>
 
-            <Spinner
+            <TextView
                 android:id="@+id/area_atuacao_empresa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:spinnerMode="dropdown" />
+                android:ems="10"
+                android:hint="Não Especificado"
+                android:inputType="none"
+                android:focusable="false"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
