@@ -41,38 +41,43 @@ public class DescricaoPesquisasEmpresa extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        DescricaoPesquisasView = inflater.inflate(R.layout.fragment_descricao_pesquisa, container, false);
         String id = empresamain.getIdviewpesquisa();
 
-        inicializaComponentes();
+        if (id!=null){
+            DescricaoPesquisasView = inflater.inflate(R.layout.fragment_descricao_pesquisa, container, false);
 
-        Query query;
-        query = databaseReference.child("pesquisa");
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot objSnapshot:dataSnapshot.getChildren()) {
-                    Pesquisa pesquisa = objSnapshot.getValue(Pesquisa.class);
-                    if (pesquisa.getId_pesquisa().equals(id)) {
-                        titulo.setText(pesquisa.getTitulo());
-                        descricao.setText(pesquisa.getDescricao());
-                        pequena_area.setText(pesquisa.getPequena_area());
-                        pesquisa_endereco.setText(pesquisa.getInstituto().concat(" - ").concat(pesquisa.getUniversidade()));
-                        professor.setText(pesquisa.getProfessor());
-                        contatos.setText(pesquisa.getContatos());
+            inicializaComponentes();
+
+            Query query;
+            query = databaseReference.child("pesquisa");
+            query.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for(DataSnapshot objSnapshot:dataSnapshot.getChildren()) {
+                        Pesquisa pesquisa = objSnapshot.getValue(Pesquisa.class);
+                        if (pesquisa.getId_pesquisa().equals(id)) {
+                            titulo.setText(pesquisa.getTitulo());
+                            descricao.setText(pesquisa.getDescricao());
+                            pequena_area.setText(pesquisa.getPequena_area());
+                            pesquisa_endereco.setText(pesquisa.getInstituto().concat(" - ").concat(pesquisa.getUniversidade()));
+                            professor.setText(pesquisa.getProfessor());
+                            contatos.setText(pesquisa.getContatos());
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
 
-        eventoClicks();
+            eventoClicks();
 
-        return DescricaoPesquisasView;
+            return DescricaoPesquisasView;
+        }  else {
+            return null;
+        }
 
     }
 
