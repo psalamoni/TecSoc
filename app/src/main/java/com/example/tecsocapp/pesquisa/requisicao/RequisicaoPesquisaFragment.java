@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.SearchView.OnQueryTextListener;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +34,8 @@ public class RequisicaoPesquisaFragment extends Fragment {
     private OnListFragmentInteractionListener mListListener;
     private OnEditarPesquisaListener mEditarPesquisaListener;
     private RequisicaoPesquisaRecyclerViewAdapter mAdapter;
+
+    private SearchView mSearchView;
 
     private List<ValueEventListener> mDbListeners = new ArrayList<>();
 
@@ -94,6 +98,56 @@ public class RequisicaoPesquisaFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_lista_requisicao, menu);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+
+        MenuItem searchViewMenuItem = menu.findItem(R.id.search);
+        mSearchView = (SearchView) searchViewMenuItem.getActionView();
+
+        String textToSearch = mSearchView.getQuery().toString();
+
+        if (!textToSearch.isEmpty()) {
+            mSearchView.setIconified(false);
+            mSearchView.setQuery(textToSearch, false);
+        }
+
+        mSearchView.setQueryHint("Pesquisar");
+        mSearchView.setOnQueryTextListener(new OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (query.isEmpty()) {
+                    exibirTodosRequisitos();
+                    return true;
+                }
+
+                removeDbListeners();
+
+                List<RequisitoPesquisa> requisitosAtuais = mAdapter.getValues();
+                List<RequisitoPesquisa> requisitosFiltrados = new ArrayList<>();
+
+                for (RequisitoPesquisa req : requisitosAtuais) {
+                    if (req.getNome().toLowerCase().contains(query.toLowerCase()))
+                        requisitosFiltrados.add(req);
+                }
+
+                mAdapter.updateData(requisitosFiltrados);
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (newText.isEmpty()) {
+                    exibirTodosRequisitos();
+                    return true;
+                }
+
+                return false;
+            }
+        });
     }
 
     @Override

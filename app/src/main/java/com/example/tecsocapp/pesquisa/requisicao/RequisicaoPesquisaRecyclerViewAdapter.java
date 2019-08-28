@@ -57,6 +57,10 @@ public class RequisicaoPesquisaRecyclerViewAdapter extends RecyclerView.Adapter<
         notifyDataSetChanged();
     }
 
+    public List<RequisitoPesquisa> getValues() {
+        return mValues;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         final View mView;
         final TextView mNomeView;
