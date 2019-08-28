@@ -3,6 +3,9 @@ package com.example.tecsocapp.pesquisa.requisicao;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -11,7 +14,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tecsocapp.Login;
 import com.example.tecsocapp.R;
+import com.example.tecsocapp.modelo.RequisicaoFavoritada;
 import com.example.tecsocapp.modelo.RequisitoPesquisa;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +31,8 @@ public class RequisicaoPesquisaFragment extends Fragment {
 
     private OnListFragmentInteractionListener mListener;
     private RequisicaoPesquisaRecyclerViewAdapter mAdapter;
+
+    private List<ValueEventListener> mDbListeners = new ArrayList<>();
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -56,34 +63,13 @@ public class RequisicaoPesquisaFragment extends Fragment {
             mAdapter = new RequisicaoPesquisaRecyclerViewAdapter(new ArrayList<>(), mListener);
             recyclerView.setAdapter(mAdapter);
 
-            AddItemsFromDb();
+            exibirTodosRequisitos();
         }
+
+        setHasOptionsMenu(true);
 
         return view;
     }
-
-    private void AddItemsFromDb() {
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
-
-        db.child("requisitoPesquisa").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                List<RequisitoPesquisa> requisitos = new ArrayList<>();
-
-                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
-                    requisitos.add(objSnapshot.getValue(RequisitoPesquisa.class));
-                }
-
-                mAdapter.updateData(requisitos);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                alert("Falha ao buscar os requisitos de pesquisa");
-            }
-        });
-    }
-
 
     @Override
     public void onAttach(Context context) {
@@ -97,6 +83,29 @@ public class RequisicaoPesquisaFragment extends Fragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_lista_requisicao, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_exibir_todos:
+                exibirTodosRequisitos();
+                item.setChecked(true);
+                return true;
+
+            case R.id.menu_apenas_favoritos:
+                exibirApenasFavoritos();
+                item.setChecked(true);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
@@ -106,6 +115,99 @@ public class RequisicaoPesquisaFragment extends Fragment {
         Toast.makeText(this.getContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
+    private void loadRequisitosFromDb(OnRequisicoesCarregadasListener reqCarregadasListener) {
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+
+        ValueEventListener dbListener = db.child("requisitoPesquisa").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<RequisitoPesquisa> requisitos = new ArrayList<>();
+
+                for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
+                    requisitos.add(objSnapshot.getValue(RequisitoPesquisa.class));
+                }
+
+                reqCarregadasListener.onRequisicoesCarregadas(requisitos);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                alert("Falha ao buscar os requisitos de pesquisa");
+            }
+        });
+
+        mDbListeners.add(dbListener);
+    }
+
+    private void loadFavoritadasFromDb(OnFavoritosCarregadosListener favCarregadosListener) {
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+
+        ValueEventListener dbListener = db.child("requisicaoFavoritada")
+                .orderByChild("usuarioId")
+                .equalTo(Login.sUsuarioId)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        List<RequisicaoFavoritada> requisicoesFavoritas = new ArrayList<>();
+
+                        for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
+                            RequisicaoFavoritada reqFav = objSnapshot.getValue(RequisicaoFavoritada.class);
+                            requisicoesFavoritas.add(reqFav);
+                        }
+
+                        favCarregadosListener.onFavoritosCarregados(requisicoesFavoritas);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        alert("Falha ao buscar os requisitos de pesquisa favoritados");
+                    }
+                });
+
+        mDbListeners.add(dbListener);
+    }
+
+    private void exibirTodosRequisitos() {
+        if (!mDbListeners.isEmpty())
+            removeDbListeners();
+
+        loadRequisitosFromDb(mAdapter::updateData);
+    }
+
+    private void exibirApenasFavoritos() {
+        if (!mDbListeners.isEmpty())
+            removeDbListeners();
+
+        loadRequisitosFromDb(requisitos -> loadFavoritadasFromDb(favoritadas -> {
+            List<RequisitoPesquisa> reqsRemover = new ArrayList<>();
+
+            for (RequisitoPesquisa req : requisitos) {
+                boolean isFav = false;
+
+                for (RequisicaoFavoritada reqFav : favoritadas) {
+                    if (reqFav.getRequisicaoId().equals(req.getId_requisito_pesquisa())) {
+                        isFav = true;
+                        break;
+                    }
+                }
+
+                if (!isFav)
+                    reqsRemover.add(req);
+            }
+
+            requisitos.removeAll(reqsRemover);
+            mAdapter.updateData(requisitos);
+        }));
+    }
+
+    private void removeDbListeners() {
+        for (ValueEventListener listener : mDbListeners)
+            FirebaseDatabase.getInstance().getReference().removeEventListener(listener);
+
+        mDbListeners.clear();
+    }
+
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -114,5 +216,13 @@ public class RequisicaoPesquisaFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(RequisitoPesquisa requisitoPesquisa);
+    }
+
+    private interface OnRequisicoesCarregadasListener {
+        void onRequisicoesCarregadas(List<RequisitoPesquisa> requisitos);
+    }
+
+    private interface OnFavoritosCarregadosListener {
+        void onFavoritosCarregados(List<RequisicaoFavoritada> favoritadas);
     }
 }
