@@ -35,6 +35,8 @@ public class Login extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
+    public static String sUsuarioId = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +93,7 @@ public class Login extends AppCompatActivity {
                             for (DataSnapshot objSnapshot : dataSnapshot.getChildren()) {
                                 TipoPerfil p = objSnapshot.getValue(TipoPerfil.class);
                                 if (p.getUsuarioId().equals(id)) {
+                                    sUsuarioId = p.getUsuarioId();
                                     String tipoPerfilUsuario = p.getPerfil();
 
                                     if (tipoPerfilUsuario.equals(TipoPerfil.PERFIL_EMPRESA)) {
