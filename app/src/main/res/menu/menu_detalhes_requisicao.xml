@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_compartilhar"
+        android:icon="@drawable/ic_share_24dp"
+        android:title="Compartilhar"
+        app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_favoritado"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="Remover favorito"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_favoritar"
+        android:icon="@drawable/ic_favorite_border_black_24dp"
+        android:title="Salvar como favorito"
+        app:showAsAction="ifRoom" />
+
+</menu>
