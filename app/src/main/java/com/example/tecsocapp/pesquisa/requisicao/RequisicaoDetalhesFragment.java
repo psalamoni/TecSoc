@@ -19,6 +19,7 @@ import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.tecsocapp.Login;
 import com.example.tecsocapp.R;
 import com.example.tecsocapp.modelo.Empresa;
 import com.example.tecsocapp.modelo.RequisicaoFavoritada;
@@ -33,7 +34,7 @@ import java.util.Objects;
 
 public class RequisicaoDetalhesFragment extends Fragment {
     private String mIdRequisicao;
-    private String mIdUsuario;
+    private String mIdUsuarioCriadorReq;
 
     private TextView mReqNomeView;
     private TextView mReqAreaView;
@@ -50,11 +51,11 @@ public class RequisicaoDetalhesFragment extends Fragment {
     private ShareActionProvider mShareActionProvider;
     private String mFavoritadoId = null;
 
-    public static RequisicaoDetalhesFragment newInstance(String requisicaoId, String usuarioId) {
+    public static RequisicaoDetalhesFragment newInstance(String requisicaoId, String usuarioCriadorReqId) {
         RequisicaoDetalhesFragment fragment = new RequisicaoDetalhesFragment();
         Bundle args = new Bundle();
         args.putString("requisicaoId", requisicaoId);
-        args.putString("usuarioId", usuarioId);
+        args.putString("usuarioCriadorReqId", usuarioCriadorReqId);
         fragment.setArguments(args);
 
         return fragment;
@@ -66,7 +67,7 @@ public class RequisicaoDetalhesFragment extends Fragment {
 
         if (getArguments() != null) {
             mIdRequisicao = getArguments().getString("requisicaoId");
-            mIdUsuario = getArguments().getString("usuarioId");
+            mIdUsuarioCriadorReq = getArguments().getString("usuarioCriadorReqId");
         }
 
         setHasOptionsMenu(true);
@@ -89,7 +90,7 @@ public class RequisicaoDetalhesFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         RequisicaoDetalhesViewModel mViewModel = ViewModelProviders.of(this).get(RequisicaoDetalhesViewModel.class);
         mViewModel.setIdRequisicao(mIdRequisicao);
-        mViewModel.setIdUsuario(mIdUsuario);
+        mViewModel.setIdUsuarioCriadorReq(mIdUsuarioCriadorReq);
 
         mViewModel.getRequisitoPesquisa().observe(this, this::setTextViewsRequisito);
         mViewModel.getEmpresa().observe(this, this::setTextViewsEmpresa);
@@ -185,8 +186,8 @@ public class RequisicaoDetalhesFragment extends Fragment {
 
         RequisicaoFavoritada reqFav = new RequisicaoFavoritada();
         reqFav.setRequisicaoId(mIdRequisicao);
-        reqFav.setUsuarioId(mIdUsuario);
-        reqFav.setId(mIdUsuario + "_" + mIdRequisicao);
+        reqFav.setUsuarioId(Login.sUsuarioId);
+        reqFav.setId(Login.sUsuarioId + "_" + mIdRequisicao);
 
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
         db.child("requisicaoFavoritada").child(reqFav.getId()).setValue(reqFav);
@@ -204,7 +205,7 @@ public class RequisicaoDetalhesFragment extends Fragment {
 
         db.child("requisicaoFavoritada")
                 .orderByKey()
-                .equalTo(mIdUsuario + "_" + mIdRequisicao)
+                .equalTo(Login.sUsuarioId + "_" + mIdRequisicao)
                 .addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {

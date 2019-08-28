@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class RequisicaoDetalhesViewModel extends ViewModel {
     private String mIdRequisicao;
-    private String mIdUsuario;
+    private String mIdUsuarioCriadorReq;
     private MutableLiveData<RequisitoPesquisa> mRequisitoPesquisa;
     private MutableLiveData<Empresa> mEmpresa;
 
@@ -60,7 +60,7 @@ public class RequisicaoDetalhesViewModel extends ViewModel {
     private void loadEmpresaFromDb() {
         DatabaseReference db = FirebaseDatabase.getInstance().getReference();
 
-        db.child("empresa").orderByChild("id_usuario").equalTo(mIdUsuario).addValueEventListener(new ValueEventListener() {
+        db.child("empresa").orderByChild("id_usuario").equalTo(mIdUsuarioCriadorReq).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 DataSnapshot snap = dataSnapshot.getChildren().iterator().next();
@@ -80,7 +80,7 @@ public class RequisicaoDetalhesViewModel extends ViewModel {
         this.mIdRequisicao = idRequisicao;
     }
 
-    void setIdUsuario(String idUsuario) {
-        this.mIdUsuario = idUsuario;
+    void setIdUsuarioCriadorReq(String idUsuario) {
+        this.mIdUsuarioCriadorReq = idUsuario;
     }
 }
