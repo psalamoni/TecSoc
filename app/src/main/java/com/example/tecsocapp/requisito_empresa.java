@@ -32,7 +32,7 @@ public class requisito_empresa extends AppCompatActivity implements AdapterView.
     private Button btnCadastrar;
     private Button btnCancelar;
     private EditText nome;
-    private String area;
+    private Spinner spinner;
     private EditText descricao;
     private EditText valor;
     private EditText obsAdicional;
@@ -40,7 +40,7 @@ public class requisito_empresa extends AppCompatActivity implements AdapterView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requisito_empresa);
-        Spinner spinner = findViewById(R.id.area_pesquisa);
+        spinner = findViewById(R.id.area_pesquisa);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.area_de_atuacao, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -55,7 +55,7 @@ public class requisito_empresa extends AppCompatActivity implements AdapterView.
         RequisitoPesquisa requisitoPesquisa = new RequisitoPesquisa();
         requisitoPesquisa.setId_requisito_pesquisa(UUID.randomUUID().toString());
         requisitoPesquisa.setId_usuario(Objects.requireNonNull(auth.getCurrentUser()).getUid());
-        requisitoPesquisa.setArea(this.area);
+        requisitoPesquisa.setArea(spinner.getSelectedItem().toString());
         requisitoPesquisa.setDescricao(this.descricao.getText().toString());
         requisitoPesquisa.setNome(this.nome.getText().toString());
         requisitoPesquisa.setObsAdicional(this.obsAdicional.getText().toString());
