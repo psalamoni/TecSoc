@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,7 +29,6 @@ import java.util.Objects;
 public class Login extends AppCompatActivity {
     private EditText editEmail, editSenha;
     private Button btnLogar, btnNovo, btnNovoPesquisa;
-    private TextView txtResetSenha;
     private FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -42,11 +40,11 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         inicializaComponentes();
-        inicarFirebase();
+        iniciarFirebase();
         eventoClicks();
     }
 
-    private void inicarFirebase() {
+    private void iniciarFirebase() {
         FirebaseApp.initializeApp(Login.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseDatabase.setPersistenceEnabled(true);
