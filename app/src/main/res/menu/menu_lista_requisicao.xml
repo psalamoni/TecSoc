@@ -2,19 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group
-        android:id="@+id/my_move"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/menu_exibir_todos"
-            android:checked="true"
-            android:title="Exibir todos"
-            app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_exibir"
+        android:icon="@drawable/ic_filter_list_24dp"
+        android:title="Configurar exibição"
+        app:showAsAction="ifRoom">
 
-        <item
-            android:id="@+id/menu_apenas_favoritos"
-            android:checked="false"
-            android:title="Exibir apenas favoritos"
-            app:showAsAction="never" />
-    </group>
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/menu_exibir_todos"
+                    android:checked="true"
+                    android:title="Exibir todos" />
+
+                <item
+                    android:id="@+id/menu_apenas_favoritos"
+                    android:checked="false"
+                    android:title="Exibir apenas favoritos" />
+            </group>
+        </menu>
+
+    </item>
+
 </menu>
