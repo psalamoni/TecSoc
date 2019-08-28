@@ -29,7 +29,8 @@ import java.util.List;
 
 public class RequisicaoPesquisaFragment extends Fragment {
 
-    private OnListFragmentInteractionListener mListener;
+    private OnListFragmentInteractionListener mListListener;
+    private OnEditarPesquisaListener mEditarPesquisaListener;
     private RequisicaoPesquisaRecyclerViewAdapter mAdapter;
 
     private List<ValueEventListener> mDbListeners = new ArrayList<>();
@@ -60,7 +61,7 @@ public class RequisicaoPesquisaFragment extends Fragment {
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-            mAdapter = new RequisicaoPesquisaRecyclerViewAdapter(new ArrayList<>(), mListener);
+            mAdapter = new RequisicaoPesquisaRecyclerViewAdapter(new ArrayList<>(), mListListener);
             recyclerView.setAdapter(mAdapter);
 
             exibirTodosRequisitos();
@@ -74,11 +75,19 @@ public class RequisicaoPesquisaFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
         if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+            mListListener = (OnListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
+        }
+
+        if (context instanceof OnEditarPesquisaListener) {
+            mEditarPesquisaListener = (OnEditarPesquisaListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnEditarPesquisaListener");
         }
     }
 
@@ -100,6 +109,10 @@ public class RequisicaoPesquisaFragment extends Fragment {
                 item.setChecked(true);
                 return true;
 
+            case R.id.menu_editar_pesquisa:
+                mEditarPesquisaListener.onEditarPesquisa();
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -108,7 +121,7 @@ public class RequisicaoPesquisaFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        mListListener = null;
     }
 
     private void alert(String msg) {
@@ -208,14 +221,12 @@ public class RequisicaoPesquisaFragment extends Fragment {
     }
 
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     */
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(RequisitoPesquisa requisitoPesquisa);
+    }
+
+    public interface OnEditarPesquisaListener {
+        void onEditarPesquisa();
     }
 
     private interface OnRequisicoesCarregadasListener {

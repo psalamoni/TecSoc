@@ -22,7 +22,11 @@
                     android:title="Exibir apenas favoritos" />
             </group>
         </menu>
-
     </item>
+
+    <item
+        android:id="@+id/menu_editar_pesquisa"
+        android:title="Editar minha pesquisa"
+        app:showAsAction="never" />
 
 </menu>
